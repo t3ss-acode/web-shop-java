@@ -2,6 +2,7 @@ package DAL;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 
 public class DBConnection {
     private static DBConnection instance = null;
@@ -21,6 +22,11 @@ public class DBConnection {
             e.printStackTrace();
         }
 
+    }
+
+    public static ResultSet executeSql(String query){
+        ResultSet rs = null;
+        return rs;
     }
 
     public static Connection getConnection(){
