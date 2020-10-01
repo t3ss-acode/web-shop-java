@@ -17,7 +17,7 @@ public class DBConnection {
     }
 
     private DBConnection(){
-        url = "jdbc:mysql://localhost:3306/test";
+        url = "jdbc:mysql://192.168.1.245:3306/webshopDB?useLegacyDatetimeCode=false&serverTimezone=Europe/Stockholm";
         user = "admin";
         password = "password123";
 

@@ -11,7 +11,7 @@ import java.util.Collection;
 public class ProductDAL {
     public static Collection<Product> getProductsFromDB(){
         Collection<Product> productList = new ArrayList<>();
-        String query = "SELECT * FROM Products";
+        String query = "SELECT * FROM products";
         try {
             ResultSet rs = DBConnection.executeSql(query,null);
             while(rs.next()){
