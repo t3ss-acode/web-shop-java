@@ -15,6 +15,7 @@ public class AuthServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //System.out.println("starting auth");
         String authHeader = req.getHeader("authorization");
         String encodedAuth = authHeader.substring(authHeader.indexOf(' ')+1);
         String decodedAuth = new String(Base64.getDecoder().decode(encodedAuth));
@@ -22,6 +23,11 @@ public class AuthServlet extends HttpServlet {
         String password = decodedAuth.substring(decodedAuth.indexOf(':')+1);
 
         User loggedInUser = UserBl.getUserFromDB(username);
+
+        //System.out.println("username: "+req.getSession().getAttribute("username"));
+        //System.out.println("username: "+req.getParameter("username"));
+        //System.out.println("password: "+req.getSession().getAttribute("password"));
+        //System.out.println("password: "+req.getParameter("password"));
 
 
         if (loggedInUser == null){
@@ -34,12 +40,19 @@ public class AuthServlet extends HttpServlet {
             return;
         }
 
-        req.getSession().setAttribute("user",username);
+
 
         String token = TokenStore.getInstance().putToken(username);
-
+        //System.out.println(req.getSession().getId());
+        req.getSession().setAttribute("username",username);
         req.getSession().setAttribute("token",token);
+        req.getSession().setAttribute("role",loggedInUser.getRole().getName());
+        //System.out.println(req.getSession().getId());
+        //System.out.println("Added attributes to " +req.getSession().getAttribute("username"));
+        //System.out.println("Added token: " +req.getSession().getAttribute("token"));
+        //System.out.println("Added role: " +req.getSession().getAttribute("role"));
+        //System.out.println("Added attributes to " +req.getParameter("username"));
 
-        resp.sendRedirect("index.jsp");
+        resp.sendRedirect("/index.jsp");
     }
 }

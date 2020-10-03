@@ -31,7 +31,7 @@ public class UserDAL {
         String query = "SELECT user.id,username,password,email,card,roles.id,roles.name FROM user \n" +
                 "LEFT JOIN userRoles ON user.id = userRoles.userId\n" +
                 "LEFT JOIN roles ON userRoles.roleId = roles.id\n" +
-                "WHERE username = "+username+ ";";
+                "WHERE username = \""+username+ "\";";
         try {
             ResultSet rs = DBConnection.executeSql(query,null);
             rs.next();

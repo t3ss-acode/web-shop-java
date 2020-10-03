@@ -16,6 +16,9 @@
     <% } else { %>
         <p><a href="login.jsp">Login</a></p>
     <% } %>
+    <p>Token: <%request.getSession().getAttribute("token");%></p>
+    <p>Username: <%request.getSession().getAttribute("username");%></p>
+    <p>Role: <%request.getSession().getAttribute("role");%></p>
     <h1>Welcome to the shop!</h1>
 </body>
 </html>
