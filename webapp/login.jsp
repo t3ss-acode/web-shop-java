@@ -14,15 +14,22 @@
     <title>Login</title>
 </head>
 <body>
-<h1>This is login page</h1>
+<h1>This is login page!</h1>
 <p>This is where you login</p>
-<div id ="login">
+<!--<div id ="login">
     <p>Name: <input type="text" value="" id="name"></p>
     <p>Password: <input type="password" id="password"></p>
     <p><button type="button" onclick="">Login</button> </p>
-</div>
-    <%
-        String urlLogin = "http://localhost:8080/web_shop_java_war_exploded/auth";
+</div>-->
+<!--<form action="" method="POST">
+    <span>Username: </span>
+    <input type="text" name="username">
+    <span>Password: </span>
+    <input type="password" name="password">
+    <input type="submit" value="Submit">
+</form>
+
+        /*String urlLogin = "http://localhost:8080/web_shop_java_war_exploded/auth";
         HttpURLConnection connection = (HttpURLConnection) new URL(urlLogin).openConnection();
         connection.setRequestMethod("POST");
         String authString = "admin" + ":" + "password";
@@ -34,12 +41,12 @@
         while(scanner.hasNextLine())
             resp += scanner.nextLine();
         scanner.close();*/
-        int responseCode = connection.getResponseCode();
+        /*int responseCode = connection.getResponseCode();
         if (responseCode == 200)
             System.out.println("Login was successful.");
         else if (responseCode == 401)
             System.out.println("Wrong password.");
-        //System.out.println(resp);
-    %>
+        //System.out.println(resp);*/
+    -->
 </body>
 </html>

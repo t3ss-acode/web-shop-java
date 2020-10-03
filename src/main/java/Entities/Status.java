@@ -1,6 +1,6 @@
 package Entities;
 
-public class Action {
+public class Status {
     private int id;
     private String name;
 

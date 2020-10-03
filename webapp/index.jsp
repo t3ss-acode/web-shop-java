@@ -11,7 +11,11 @@
     <title>Hello, i am a Java web app!</title>
 </head>
 <body>
-    <h1>Simple Java web app demo</h1>
-    <p>To invoke the java servlet click <a href="UIL.myServlet">here</a></p>
+    <% if (request.getSession().getAttribute("user") != null){ %>
+       <p>Hello <%= request.getSession().getAttribute("user") %>!</p>
+    <% } else { %>
+        <p><a href="login.jsp">Login</a></p>
+    <% } %>
+    <h1>Welcome to the shop!</h1>
 </body>
 </html>

@@ -23,6 +23,7 @@ public class AuthServlet extends HttpServlet {
 
         User loggedInUser = UserBl.getUserFromDB(username);
 
+
         if (loggedInUser == null){
             resp.sendError(HttpServletResponse.SC_UNAUTHORIZED);
             return;
@@ -33,8 +34,12 @@ public class AuthServlet extends HttpServlet {
             return;
         }
 
+        req.getSession().setAttribute("user",username);
+
         String token = TokenStore.getInstance().putToken(username);
 
-        resp.getOutputStream().print(token);
+        req.getSession().setAttribute("token",token);
+
+        resp.sendRedirect("index.jsp");
     }
 }

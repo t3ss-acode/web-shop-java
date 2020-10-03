@@ -11,11 +11,13 @@ import java.util.Collection;
 public class ProductDAL {
     public static Collection<Product> getProductsFromDB(){
         Collection<Product> productList = new ArrayList<>();
-        String query = "SELECT * FROM products";
+        String query = "SELECT products.id,name,cost,description,COUNT(*) FROM products " +
+                "LEFT JOIN amount ON products.id = amount.productId " +
+                "GROUP BY products.id;";
         try {
             ResultSet rs = DBConnection.executeSql(query,null);
             while(rs.next()){
-                productList.add(translateRow(rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getString(4)));
+                productList.add(translateRow(rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getString(4),rs.getInt(5)));
             }
         }catch (SQLException e) {
             e.printStackTrace();
@@ -67,12 +69,13 @@ public class ProductDAL {
         return "Product removed.";
     }
 
-    private static Product translateRow(int id, String name,int cost, String desc){
+    private static Product translateRow(int id, String name,int cost, String desc, int amount){
         Product product = new Product();
         product.setId(id);
         product.setName(name);
         product.setCost(cost);
         product.setDescription(desc);
+        product.setAmount(amount);
         return product;
     }
 }
