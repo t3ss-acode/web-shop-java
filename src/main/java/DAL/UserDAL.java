@@ -2,6 +2,7 @@ package DAL;
 
 import Entities.User;
 
+import java.math.BigInteger;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ public class UserDAL {
         try {
             ResultSet rs = DBConnection.executeSql(query,null);
             while(rs.next()){
-                userList.add(translateRow(rs.getInt(1),rs.getString(2),rs.getString(3), rs.getString(4),rs.getInt(6)));
+                userList.add(translateRow(rs.getInt(1),rs.getString(2),rs.getString(3), rs.getString(4),rs.getLong(5)));
             }
         }catch (SQLException e) {
             e.printStackTrace();
@@ -27,7 +28,8 @@ public class UserDAL {
         String query = "SELECT * FROM user WHERE username = \"" + username +"\"";
         try {
             ResultSet rs = DBConnection.executeSql(query,null);
-            user = translateRow(rs.getInt(1),rs.getString(2),rs.getString(3), rs.getString(4),rs.getInt(6));
+            rs.next();
+            user = translateRow(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),rs.getLong(5));
             return user;
         }catch (SQLException e) {
             e.printStackTrace();
@@ -80,7 +82,7 @@ public class UserDAL {
         return "User removed.";
     }
 
-    private static User translateRow(int id, String username, String password, String email, int card){
+    private static User translateRow(int id, String username, String password, String email, Long card){
         User user = new User();
         user.setId(id);
         user.setUsername(username);

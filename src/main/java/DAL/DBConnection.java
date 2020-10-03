@@ -18,6 +18,7 @@ public class DBConnection {
 
     private DBConnection(){
         url = "jdbc:mysql://213.21.125.156:3306/webshopDB?useLegacyDatetimeCode=false&serverTimezone=Europe/Stockholm";
+        //url = "jdbc:mysql://192.168.1.245:3306/webshopDB?useLegacyDatetimeCode=false&serverTimezone=Europe/Stockholm";
         user = "admin";
         password = "password123";
 
@@ -60,7 +61,7 @@ public class DBConnection {
             }
             pstmt.executeUpdate();
         }catch (SQLException e){
-            throw e;
+            e.printStackTrace();
         }
     }
 

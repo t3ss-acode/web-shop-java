@@ -1,17 +1,19 @@
 package Entities;
 
+import java.math.BigInteger;
+
 public class User {
     private int id;
     private String username;
     private String password;
     private String email;
-    private int card;
+    private long card;
     private Role role;
 
     public User() {
     }
 
-    public User(int id, String username, String password, String email, int card, Role role) {
+    public User(int id, String username, String password, String email, long card, Role role) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -36,7 +38,7 @@ public class User {
         return email;
     }
 
-    public int getCard() {
+    public long getCard() {
         return card;
     }
 
@@ -60,7 +62,7 @@ public class User {
         this.email = email;
     }
 
-    public void setCard(int card) {
+    public void setCard(long card) {
         this.card = card;
     }
 
