@@ -22,7 +22,7 @@ public class DBConnection {
         password = "password123";
 
         try {
-            //Class.forName("com.mysql.jdbc.Driver").newInstance();
+            Class.forName("com.mysql.jdbc.Driver").newInstance();
             con = DriverManager.getConnection(url,user,password);
         } catch (Exception e){
             e.printStackTrace();

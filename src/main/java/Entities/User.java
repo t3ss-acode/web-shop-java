@@ -8,6 +8,9 @@ public class User {
     private int card;
     private Role role;
 
+    public User() {
+    }
+
     public User(int id, String username, String password, String email, int card, Role role) {
         this.id = id;
         this.username = username;

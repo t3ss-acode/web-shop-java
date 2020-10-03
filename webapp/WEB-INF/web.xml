@@ -5,13 +5,20 @@
          version="4.0">
 
     <servlet>
-        <servlet-name>myServlet</servlet-name>
-        <servlet-class>UIL.myServlet</servlet-class>
+        <servlet-name>AuthServlet</servlet-name>
+        <servlet-class>UIL.AuthServlet</servlet-class>
     </servlet>
-
     <servlet-mapping>
-        <servlet-name>myServlet</servlet-name>
-        <url-pattern>/UIL.myServlet</url-pattern>
+        <servlet-name>AuthServlet</servlet-name>
+        <url-pattern>/auth</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ProductServlet</servlet-name>
+        <servlet-class>UIL.ProductServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProductServlet</servlet-name>
+        <url-pattern>/product/*</url-pattern>
     </servlet-mapping>
 
 </web-app>
