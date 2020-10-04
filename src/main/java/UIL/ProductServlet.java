@@ -16,18 +16,33 @@ public class ProductServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String token = (String) req.getSession().getAttribute("token");
-        //String token = (String) req.getParameter("token");
-        //System.out.println("doing get product");
-        //System.out.println("token: "+token);
 
         if (!TokenStore.getInstance().checkToken(token)){
-            //System.out.println("Token has expired or not valid.");
             resp.sendError(HttpServletResponse.SC_UNAUTHORIZED);
             return;
         }
 
-        ArrayList<Product> productList = (ArrayList<Product>) ProductBL.getProductsFromDB();
         req.getSession().setAttribute("productList", ProductBL.getProductsFromDB());
         resp.sendRedirect("./product.jsp");
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String token = (String) req.getSession().getAttribute("token");
+        String role = (String) req.getSession().getAttribute("role");
+
+        if (!TokenStore.getInstance().checkToken(token)){
+            resp.sendError(HttpServletResponse.SC_UNAUTHORIZED);
+            return;
+        }
+
+        if (!role.equalsIgnoreCase("customer")){
+            resp.sendError(HttpServletResponse.SC_UNAUTHORIZED);
+            return;
+        }
+
+        if(ProductBL.addProduct((Product) req.getSession().getAttribute("product")))
+            resp.setStatus(HttpServletResponse.SC_OK);
+        resp.setStatus(HttpServletResponse.SC_CONFLICT);
     }
 }
