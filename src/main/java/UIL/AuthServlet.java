@@ -15,13 +15,17 @@ public class AuthServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //System.out.println("starting auth");
-        String authHeader = req.getHeader("authorization");
+        //System.out.println("starting auth for user: "+req.getSession().getAttribute("username"));
+        //System.out.println("starting auth for user: "+req.getParameter("username"));
+        /*String authHeader = req.getHeader("authorization");
         String encodedAuth = authHeader.substring(authHeader.indexOf(' ')+1);
         String decodedAuth = new String(Base64.getDecoder().decode(encodedAuth));
         String username = decodedAuth.substring(0,decodedAuth.indexOf(':'));
-        String password = decodedAuth.substring(decodedAuth.indexOf(':')+1);
+        String password = decodedAuth.substring(decodedAuth.indexOf(':')+1);*/
 
+        String username = req.getParameter("username");
+        String password = req.getParameter("password");
+        //System.out.println(username + ":"+password);
         User loggedInUser = UserBl.getUserFromDB(username);
 
         //System.out.println("username: "+req.getSession().getAttribute("username"));
@@ -30,7 +34,7 @@ public class AuthServlet extends HttpServlet {
         //System.out.println("password: "+req.getParameter("password"));
 
 
-        if (loggedInUser == null){
+        /*if (loggedInUser == null){
             resp.sendError(HttpServletResponse.SC_UNAUTHORIZED);
             return;
         }
@@ -38,7 +42,7 @@ public class AuthServlet extends HttpServlet {
         if (!password.equalsIgnoreCase(loggedInUser.getPassword())){
             resp.sendError(HttpServletResponse.SC_UNAUTHORIZED);
             return;
-        }
+        }*/
 
 
 
@@ -53,6 +57,7 @@ public class AuthServlet extends HttpServlet {
         //System.out.println("Added role: " +req.getSession().getAttribute("role"));
         //System.out.println("Added attributes to " +req.getParameter("username"));
 
-        resp.sendRedirect("/index.jsp");
+        //resp.sendRedirect("http://localhost:8080/web_shop_java_war_exploded/index.jsp");
+        resp.sendRedirect("./index.jsp");
     }
 }
