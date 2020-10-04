@@ -17,7 +17,13 @@ public class ProductDAL {
         try {
             ResultSet rs = DBConnection.executeSql(query,null);
             while(rs.next()){
-                productList.add(translateRow(rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getString(4),rs.getInt(5)));
+                productList.add(translateRow(
+                        //id, name, cost, description, amount
+                        rs.getInt(1),
+                        rs.getString(2),
+                        rs.getInt(3),
+                        rs.getString(4),
+                        rs.getInt(5)));
             }
         }catch (SQLException e) {
             e.printStackTrace();
