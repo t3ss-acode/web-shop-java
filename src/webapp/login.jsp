@@ -34,7 +34,7 @@
 <p>Role: <%=request.getSession().getAttribute("role")%></p>
 
         <%
-        /*String urlLogin = "http://localhost:8080/web_shop_java_war_exploded/auth";
+        String urlLogin = "http://localhost:8080/web_shop_java_war_exploded/auth";
         HttpURLConnection connection = (HttpURLConnection) new URL(urlLogin).openConnection();
         connection.setRequestMethod("POST");
         //request.getSession().setAttribute("username","admin");

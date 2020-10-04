@@ -28,6 +28,15 @@ public class TokenStore {
         return null;
     }
 
+    public boolean checkToken(String token){
+        if (tokenMap.containsKey(token))
+            if (tokenMap.get(token).expirationTime > System.currentTimeMillis())
+                return true;
+            else
+                tokenMap.remove(token);
+        return false;
+    }
+
     private static class TokenData{
         String username;
         long expirationTime;

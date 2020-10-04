@@ -3,7 +3,7 @@ package DAL;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class DBConnection {
+class DBConnection {
     private static DBConnection instance = null;
     private static Connection con = null;
     private static String url;

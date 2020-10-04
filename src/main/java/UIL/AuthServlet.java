@@ -26,6 +26,7 @@ public class AuthServlet extends HttpServlet {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
         //System.out.println(username + ":"+password);
+        //System.out.println(req.getSession().getAttribute("username")+":"+req.getSession().getAttribute("password"));
         User loggedInUser = UserBl.getUserFromDB(username);
 
         //System.out.println("username: "+req.getSession().getAttribute("username"));

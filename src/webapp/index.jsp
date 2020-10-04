@@ -1,4 +1,6 @@
-<%--
+<%@ page import="java.util.Collection" %>
+<%@ page import="Entities.Product" %>
+<%@ page import="java.util.ArrayList" %><%--
   Created by IntelliJ IDEA.
   User: Rasmus
   Date: 2020-09-25
@@ -11,6 +13,7 @@
     <title>Hello, i am a Java web app!</title>
 </head>
 <body>
+<h1>Welcome to the shop!</h1>
     <% if (request.getSession().getAttribute("username") != null){ %>
        <p>Hello <%= request.getSession().getAttribute("username") %>! (<a href="./logout">Logout</a> )</p>
         <p>Token: <%=request.getSession().getAttribute("token")%></p>
@@ -19,7 +22,11 @@
     <% } else { %>
         <p><a href="login.jsp">Login</a></p>
     <% } %>
-    <h1>Welcome to the shop!</h1>
+
+<form action="./product">
+    <input type="submit" value="Get products">
+</form>
+
 
 </body>
 </html>
