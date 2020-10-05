@@ -16,29 +16,34 @@
 <h1>Welcome to the shop!</h1>
     <% if (request.getSession().getAttribute("username") != null){ %>
        <p>Hello <%= request.getSession().getAttribute("username") %>! (<a href="./logout">Logout</a> )</p>
-        <p>Token: <%=request.getSession().getAttribute("token")%></p>
-        <p>Username: <%=request.getSession().getAttribute("username")%></p>
-        <p>Role: <%=request.getSession().getAttribute("role")%></p>
     <% } else { %>
         <p><a href="login.jsp">Login</a></p>
     <% } %>
-<div navigation>
-    <% if (request.getSession().getAttribute("role") == "admin"){ %>
-    <form action="./createAccount.jsp">
-        <input type="submit" value="Create Account">
-    </form>
-    <form action="./createProduct.jsp">
-        <input type="submit" value="Create Product">
-    </form>
-    <% } %>
-    <% if (request.getSession().getAttribute("role") == "worker"){ %>
-
-    <% } %>
-    <% if (request.getSession().getAttribute("role") != null){ %>
-    <form action="./product">
-        <input type="submit" value="Get products">
-    </form>
-    <% } %>
+<div id="navigation">
+    <% String role = (String) request.getSession().getAttribute("role");
+        if (role != null){
+        if (role.equalsIgnoreCase("admin")){ %>
+        <form action="./createAccount.jsp">
+            <input type="submit" value="Create Account">
+        </form>
+        <form action="./createProduct.jsp">
+            <input type="submit" value="Create Product">
+        </form>
+        <% } %>
+        <% if (role.equalsIgnoreCase("worker") || role.equalsIgnoreCase("admin")){ %>
+        <form action="./manageProduct.jsp">
+            <input type="submit" value="Manage Products">
+        </form>
+        <% } %>
+        <% if (role.equalsIgnoreCase("customer") || role.equalsIgnoreCase("worker") || role.equalsIgnoreCase("admin")){ %>
+        <form action="./product">
+            <input type="submit" value="Get products">
+        </form>
+        <form action="./index.jsp">
+            <input type="submit" value="Start page">
+        </form>
+        <% }
+    } %>
 </div>
 
 </body>
