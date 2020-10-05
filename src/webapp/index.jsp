@@ -31,7 +31,7 @@
         </form>
         <% } %>
         <% if (role.equalsIgnoreCase("worker") || role.equalsIgnoreCase("admin")){ %>
-        <form action="./manageProduct.jsp">
+        <form action="./manageProduct">
             <input type="submit" value="Manage Products">
         </form>
         <% } %>

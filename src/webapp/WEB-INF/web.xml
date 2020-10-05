@@ -59,6 +59,15 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>ManageProductServlet</servlet-name>
+        <servlet-class>UIL.ManageProductServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ManageProductServlet</servlet-name>
+        <url-pattern>/manageProduct</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>LogoutServlet</servlet-name>
         <servlet-class>UIL.LogoutServlet</servlet-class>
     </servlet>

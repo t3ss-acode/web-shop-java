@@ -18,7 +18,7 @@ public class UniqProductBL {
         return UniqProductDAL.removeUniqProduct(uniqProductNotWanted);
     }
 
-    public static String updateUniqProduct(UniqProduct editedUniqProduct){
+    public static boolean updateUniqProduct(UniqProduct editedUniqProduct){
         return UniqProductDAL.updateUniqProduct(editedUniqProduct);
     }
 }

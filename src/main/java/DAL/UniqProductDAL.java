@@ -40,7 +40,7 @@ public class UniqProductDAL {
         return true;
     }
 
-    public static String updateUniqProduct(UniqProduct editedUniqProduct) {
+    public static boolean updateUniqProduct(UniqProduct editedUniqProduct) {
         String query = "UPDATE amount set statusId = ? " +
                 " WHERE id = ?";
         ArrayList<Object> pp = new ArrayList<>();
@@ -50,9 +50,9 @@ public class UniqProductDAL {
             DBConnection.executeUpdateSql(query,pp);
         } catch (SQLException e) {
             e.printStackTrace();
-            return "Could not Update.";
+            return false;
         }
-        return "System updated.";
+        return true;
     }
 
     public static String removeUniqProduct(UniqProduct uniqProductNotWanted) {

@@ -16,10 +16,11 @@ public class CreateProductServlet extends HttpServlet {
         String name = req.getParameter("name");
         int cost = Integer.parseInt(req.getParameter("cost"));
         String desc = req.getParameter("description");
+        String username = (String) req.getSession().getAttribute("username");
         String token = (String) req.getSession().getAttribute("token");
         String role = (String) req.getSession().getAttribute("role");
 
-        if (!TokenStore.getInstance().checkToken(token)){
+        if (TokenStore.getInstance().getUsername(username) != token){
             resp.sendError(HttpServletResponse.SC_UNAUTHORIZED);
             return;
         }
