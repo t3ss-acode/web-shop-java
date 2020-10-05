@@ -5,7 +5,6 @@ import BL.UniqProductBL;
 import Entities.Product;
 import Entities.TokenStore;
 import Entities.UniqProduct;
-import com.google.gson.Gson;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

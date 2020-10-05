@@ -62,6 +62,9 @@
                 <p><%=shoppingCart.get(i).getCost()%> kr &nbsp&nbsp&nbsp&nbsp
                     Antal i lager: <%=shoppingCart.get(i).getAmount()%></p>
                 <p><%=shoppingCart.get(i).getDescription()%></p>
+                <form action="./removefromcart">
+                    <input type="submit" name="listId" value="<%=i%>">
+                </form>
             </div><%
             }
         } else
