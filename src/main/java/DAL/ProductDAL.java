@@ -32,11 +32,15 @@ public class ProductDAL {
     }
 
     public static boolean addProduct(Product addProduct) {
-        String query = "INSERT INTO products (name,cost,description) VALUES (?,?,?)";
-        ArrayList<Object> pp = new ArrayList<>();
-        pp.add(addProduct.getName());
-        pp.add(addProduct.getCost());
-        pp.add(addProduct.getDescription());
+        String[] query = new String[2];
+        query[0] = "INSERT INTO products (name,cost,description) VALUES (?,?,?)";
+        query[1] = "INSERT INTO amount (productId,statusId) VALUES (last_insert_id(),1)";
+        ArrayList<Object>[] pp = new ArrayList[query.length];
+        pp[0] = new ArrayList<>();
+        pp[1] = new ArrayList<>();
+        pp[0].add(addProduct.getName());
+        pp[0].add(addProduct.getCost());
+        pp[0].add(addProduct.getDescription());
         try {
             DBConnection.executeUpdateSql(query, pp);
         }catch (SQLException e) {

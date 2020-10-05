@@ -21,6 +21,11 @@
             var authHeader = "Basic " + encodedAuth;
             var hiddenEncoded = document.getElementById("authorization");
             hiddenEncoded.value = authHeader;
+            name.value = "-";
+            email.value = "-";
+            card.value = "-";
+            pass.value = "-";
+            rPass.value = "-";
         }
     </script>
 </head>
@@ -31,15 +36,15 @@
 <form id="account" onsubmit="return encrypt();" action="./createAccount" method="post">
     <hr/>
     <span>Username:         </span>
-    <input type="text" name="username" id="username"><br>
+    <input type="text" name="username" id="username" required><br>
     <span>Email:            </span>
-    <input type="email" name="email" id="email"><br>
+    <input type="email" name="email" id="email" required><br>
     <span>Card:             </span>
-    <input type="text" name="card" id="card"><br>
+    <input type="text" name="card" id="card" required><br>
     <span>Password:         </span>
-    <input type="password" name="password" id="password"><br>
+    <input type="password" name="password" id="password" required><br>
     <span>Re-type Password: </span>
-    <input type="password" name="rePassword" id="rePassword"><br>
+    <input type="password" name="rePassword" id="rePassword" required><br>
     <% if (request.getSession().getAttribute("role") != null)
         if(request.getSession().getAttribute("role").toString().equalsIgnoreCase("admin")) { %>
     <input type="radio" name="role" id="worker" value="worker">

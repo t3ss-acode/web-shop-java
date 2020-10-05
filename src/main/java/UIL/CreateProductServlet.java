@@ -9,25 +9,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
 
-public class ProductServlet extends HttpServlet {
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String token = (String) req.getSession().getAttribute("token");
-
-        if (!TokenStore.getInstance().checkToken(token)){
-            resp.sendError(HttpServletResponse.SC_UNAUTHORIZED);
-            return;
-        }
-
-        req.getSession().setAttribute("productList", ProductBL.getProductsFromDB());
-        resp.sendRedirect("./product.jsp");
-    }
-
+public class CreateProductServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String name = req.getParameter("name");
+        int cost = Integer.parseInt(req.getParameter("cost"));
+        String desc = req.getParameter("description");
         String token = (String) req.getSession().getAttribute("token");
         String role = (String) req.getSession().getAttribute("role");
 
@@ -41,8 +29,19 @@ public class ProductServlet extends HttpServlet {
             return;
         }
 
-        if(ProductBL.addProduct((Product) req.getSession().getAttribute("product")))
+        if (name == null || cost == 0 || desc == null){
+            resp.sendError(HttpServletResponse.SC_NOT_ACCEPTABLE);
+            return;
+        }
+
+        Product newproduct = new Product();
+        newproduct.setName(name);
+        newproduct.setCost(cost);
+        newproduct.setDescription(desc);
+        if (ProductBL.addProduct(newproduct)){
             resp.setStatus(HttpServletResponse.SC_OK);
-        resp.setStatus(HttpServletResponse.SC_CONFLICT);
+            resp.sendRedirect("./product.jsp");
+        }else
+            resp.sendError(HttpServletResponse.SC_CONFLICT);
     }
 }

@@ -22,14 +22,24 @@
     <% } else { %>
         <p><a href="login.jsp">Login</a></p>
     <% } %>
+<div navigation>
+    <% if (request.getSession().getAttribute("role") == "admin"){ %>
+    <form action="./createAccount.jsp">
+        <input type="submit" value="Create Account">
+    </form>
+    <form action="./createProduct.jsp">
+        <input type="submit" value="Create Product">
+    </form>
+    <% } %>
+    <% if (request.getSession().getAttribute("role") == "worker"){ %>
 
-<form action="./product">
-    <input type="submit" value="Get products">
-</form>
-<form action="./createAccount.jsp">
-    <input type="submit" value="Create Account">
-</form>
-
+    <% } %>
+    <% if (request.getSession().getAttribute("role") != null){ %>
+    <form action="./product">
+        <input type="submit" value="Get products">
+    </form>
+    <% } %>
+</div>
 
 </body>
 </html>
