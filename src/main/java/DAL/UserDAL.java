@@ -44,12 +44,17 @@ public class UserDAL {
     }
 
     public static boolean addUser(User newUser){
-        String query = "INSERT INTO user (username,password,email,card) VALUES (?,?,?,?)";
-        ArrayList<Object> pp = new ArrayList<>();
-        pp.add(newUser.getUsername());
-        pp.add(newUser.getPassword());
-        pp.add(newUser.getEmail());
-        pp.add(newUser.getCard());
+        String query[] = new String[2];
+        query[0] = "INSERT INTO user (username,password,email,card) VALUES (?,?,?,?);";
+        query[1] = "INSERT INTO userRoles (userId,roleId) VALUES (last_insert_id(), ?);";
+        ArrayList<Object>[] pp = new ArrayList[query.length];
+        pp[0] = new ArrayList<>();
+        pp[1]= new ArrayList<>();
+        pp[0].add(newUser.getUsername());
+        pp[0].add(newUser.getPassword());
+        pp[0].add(newUser.getEmail());
+        pp[0].add(newUser.getCard());
+        pp[1].add(newUser.getRole().getId());
         try {
             DBConnection.executeUpdateSql(query,pp);
         } catch (SQLException e) {

@@ -52,7 +52,6 @@ class DBConnection {
     public static void executeUpdateSql(String query, ArrayList<Object> pp) throws SQLException {
         PreparedStatement pstmt = null;
         Connection con = getConnection();
-
         try {
             pstmt = con.prepareStatement(query);
             if (pp != null) {
@@ -62,6 +61,32 @@ class DBConnection {
             pstmt.executeUpdate();
         }catch (SQLException e){
             e.printStackTrace();
+        }
+    }
+
+    public static void executeUpdateSql(String[] query, ArrayList<Object>[] pp) throws SQLException{
+        Connection con = getConnection();
+        try {
+            PreparedStatement[] pstmt = new PreparedStatement[query.length];
+            con.setAutoCommit(false);
+            for (int i = 0;i<query.length;i++) {
+                pstmt[i] = con.prepareStatement(query[i]);
+                for (int j = 1; j <= pp[i].size(); j++) {
+                    pstmt[i].setObject(j,pp[i].get(j-1));
+                }
+                pstmt[i].executeUpdate();
+            }
+            con.commit();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            if (con != null){
+                try {
+                    System.err.print("Transaction is being rolled back");
+                    con.rollback();
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
+            }
         }
     }
 

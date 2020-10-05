@@ -32,6 +32,15 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>CreateAccountServlet</servlet-name>
+        <servlet-class>UIL.CreateAccountServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CreateAccountServlet</servlet-name>
+        <url-pattern>/createAccount</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>LogoutServlet</servlet-name>
         <servlet-class>UIL.LogoutServlet</servlet-class>
     </servlet>

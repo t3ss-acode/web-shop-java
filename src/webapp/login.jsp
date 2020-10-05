@@ -39,6 +39,12 @@
     <input type="hidden" name="authorization" id="authorization">
     <input type="submit" name="submit">
 </form>
+<form action="./index.jsp">
+    <input type="submit" value="Start page">
+</form>
+<form action="./createAccount.jsp">
+    <input type="submit" value="Create Account">
+</form>
 
         <%
         /*String urlLogin = "http://localhost:8080/web_shop_java_war_exploded/auth";

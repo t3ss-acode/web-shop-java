@@ -26,6 +26,9 @@
 <form action="./product">
     <input type="submit" value="Get products">
 </form>
+<form action="./createAccount.jsp">
+    <input type="submit" value="Create Account">
+</form>
 
 
 </body>
