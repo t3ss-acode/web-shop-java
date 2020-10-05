@@ -32,12 +32,21 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>AddToCartServlet</servlet-name>
-        <servlet-class>UIL.AddToCartServlet</servlet-class>
+        <servlet-name>CreateAccountServlet</servlet-name>
+        <servlet-class>UIL.CreateAccountServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>AddToCartServlet</servlet-name>
-        <url-pattern>/addtocart</url-pattern>
+        <servlet-name>CreateAccountServlet</servlet-name>
+        <url-pattern>/createAccount</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CreateProductServlet</servlet-name>
+        <servlet-class>UIL.CreateProductServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CreateProductServlet</servlet-name>
+        <url-pattern>/createProduct</url-pattern>
     </servlet-mapping>
 
     <servlet>
