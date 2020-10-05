@@ -55,6 +55,7 @@
             font-size: large;
             padding: 20px 20px;
             margin-left: 30px;
+            margin-top: 30px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
@@ -67,13 +68,6 @@
         <h1>The website</h1>
         <p>Website with stuff you can put in a shopping cart</p>
     </div>
-
-
-    <p>Press button for products</p>
-    <form action="./product">
-        <input type="submit" value="Get products">
-    </form>
-
 
     <form action="./cart">
         <input type="submit" value="View shopping cart">
@@ -89,8 +83,10 @@
                 <p><%=productList.get(i).getCost()%> kr &nbsp&nbsp&nbsp&nbsp
                     Antal i lager: <%=productList.get(i).getAmount()%></p>
                 <p><%=productList.get(i).getDescription()%></p>
-                <button class="button" type="button" value="<%productList.get(i);%>"
-                        onclick="">Add to cart</button>
+                <%request.getSession().setAttribute(String.valueOf(i), productList.get(i));%>
+                <form action="./addtocart">
+                    <input type="submit" name="productId" value="<%=i%>">
+                </form>
             </div><%
         }
 

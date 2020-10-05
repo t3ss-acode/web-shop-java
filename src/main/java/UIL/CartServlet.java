@@ -24,6 +24,7 @@ public class CartServlet extends HttpServlet {
 
         String testCart = "testCart";
         req.getSession().setAttribute("testParameter", testCart);
+
         resp.sendRedirect("./cart.jsp");
     }
 }
