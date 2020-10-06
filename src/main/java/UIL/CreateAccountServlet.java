@@ -30,17 +30,15 @@ public class CreateAccountServlet extends HttpServlet {
             return;
         }
 
-        Role newRole = new Role();
         if (role==null)
-            newRole.setName("customer");
-        else
-            newRole.setName(role);
+            role ="customer";
 
-        User newUser = new User(username, password,email, card, newRole);
+        /*User newUser = new User(username, password,email, card, role);
         if (UserBl.addUser(newUser)){
             resp.setStatus(HttpServletResponse.SC_OK);
             resp.sendRedirect("./index.jsp");
         }else
             resp.sendError(HttpServletResponse.SC_NOT_ACCEPTABLE);
+            */
     }
 }

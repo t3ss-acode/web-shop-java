@@ -4,15 +4,12 @@ public class Role {
     private int id;
     private String name;
 
-    public Role() {
-    }
-
-    public Role(int id, String name) {
-        this.id = id;
+    protected Role(String name) {
         this.name = name;
     }
 
-    public Role(String name) {
+    protected Role(int id, String name) {
+        this.id = id;
         this.name = name;
     }
 

@@ -1,7 +1,5 @@
 package Entities;
 
-import java.math.BigInteger;
-
 public class User {
     private int id;
     private String username;
@@ -10,24 +8,27 @@ public class User {
     private long card;
     private Role role;
 
-    public User() {
-    }
-
-    public User(String username, String password, String email, long card, Role role) {
+    protected User(int id, String username) {
+        this.id = id;
         this.username = username;
-        this.password = password;
-        this.email = email;
-        this.card = card;
-        this.role = role;
     }
 
-    public User(int id, String username, String password, String email, long card, Role role) {
+    protected User(int id, String username, String password, String email, Long card,String roleName) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.email = email;
         this.card = card;
-        this.role = role;
+        this.role = new Role(roleName);
+    }
+
+    protected User(int id, String username, String password, String email, Long card,int roleId, String roleName) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.card = card;
+        this.role = new Role(roleId,roleName);
     }
 
     public int getId() {

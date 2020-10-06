@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class ProductDAL {
+public class ProductDAL extends Product{
     public static Collection<Product> getProductsFromDB(){
         Collection<Product> productList = new ArrayList<>();
         String query = "SELECT products.id,name,cost,description,COUNT(*) FROM products " +
@@ -17,7 +17,7 @@ public class ProductDAL {
         try {
             ResultSet rs = DBConnection.executeSql(query,null);
             while(rs.next()){
-                productList.add(translateRow(
+                productList.add(new ProductDAL(
                         //id, name, cost, description, amount
                         rs.getInt(1),
                         rs.getString(2),
@@ -79,13 +79,7 @@ public class ProductDAL {
         return "Product removed.";
     }
 
-    private static Product translateRow(int id, String name,int cost, String desc, int amount){
-        Product product = new Product();
-        product.setId(id);
-        product.setName(name);
-        product.setCost(cost);
-        product.setDescription(desc);
-        product.setAmount(amount);
-        return product;
+    public ProductDAL(int id, String name, int cost, String description, int amount) {
+        super(id, name, cost, description, amount);
     }
 }

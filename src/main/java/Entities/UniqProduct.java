@@ -5,6 +5,12 @@ public class UniqProduct{
     private Product product;
     private Status status;
 
+    protected UniqProduct(int id,int productId, String productName,int cost, String desc,int statusId, String statusName) {
+        this.id = id;
+        this.product = new Product(productId,productName,cost,desc);
+        this.status = new Status(statusId,statusName);
+    }
+
     public int getId() {
         return id;
     }

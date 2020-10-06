@@ -1,21 +1,20 @@
 package DAL;
 
 import Entities.Role;
-import Entities.User;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class RoleDAL {
+public class RoleDAL extends Role {
     public static Collection<Role> getRolesFromDB(){
         Collection<Role> userList = new ArrayList<>();
         String query = "SELECT * FROM roles";
         try {
             ResultSet rs = DBConnection.executeSql(query,null);
             while(rs.next()){
-                userList.add(translateRow(rs.getInt(1),rs.getString(2)));
+                userList.add(new RoleDAL(rs.getInt(1),rs.getString(2)));
             }
         }catch (SQLException e) {
             e.printStackTrace();
@@ -62,10 +61,7 @@ public class RoleDAL {
         return "Role removed.";
     }
 
-    private static Role translateRow(int id, String name){
-        Role role = new Role();
-        role.setId(id);
-        role.setName(name);
-        return role;
+    private RoleDAL(int id, String name) {
+        super(id, name);
     }
 }

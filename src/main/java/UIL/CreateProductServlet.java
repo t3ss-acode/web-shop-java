@@ -35,7 +35,7 @@ public class CreateProductServlet extends HttpServlet {
             return;
         }
 
-        Product newproduct = new Product();
+        /*Product newproduct = new Product();
         newproduct.setName(name);
         newproduct.setCost(cost);
         newproduct.setDescription(desc);
@@ -43,6 +43,6 @@ public class CreateProductServlet extends HttpServlet {
             resp.setStatus(HttpServletResponse.SC_OK);
             resp.sendRedirect("./product.jsp");
         }else
-            resp.sendError(HttpServletResponse.SC_CONFLICT);
+            resp.sendError(HttpServletResponse.SC_CONFLICT);*/
     }
 }

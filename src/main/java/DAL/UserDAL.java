@@ -1,15 +1,13 @@
 package DAL;
 
-import Entities.Role;
 import Entities.User;
 
-import java.math.BigInteger;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class UserDAL {
+public class UserDAL extends User{
     public static Collection<User> getUsersFromDB(){
         Collection<User> userList = new ArrayList<>();
         String query = "SELECT user.id,username,password,email,card,roles.id,roles.name FROM user " +
@@ -18,7 +16,7 @@ public class UserDAL {
         try {
             ResultSet rs = DBConnection.executeSql(query,null);
             while(rs.next()){
-                userList.add(translateRow(rs.getInt(1),rs.getString(2),rs.getString(3), rs.getString(4),rs.getLong(5),rs.getInt(6),rs.getString(7)));
+                userList.add(new UserDAL(rs.getInt(1),rs.getString(2),rs.getString(3), rs.getString(4),rs.getLong(5),rs.getInt(6),rs.getString(7)));
             }
         }catch (SQLException e) {
             e.printStackTrace();
@@ -35,7 +33,7 @@ public class UserDAL {
         try {
             ResultSet rs = DBConnection.executeSql(query,null);
             rs.next();
-            user = translateRow(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),rs.getLong(5),rs.getInt(6),rs.getString(7));
+            user = new UserDAL(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),rs.getLong(5),rs.getInt(6),rs.getString(7));
             return user;
         }catch (SQLException e) {
             e.printStackTrace();
@@ -93,17 +91,7 @@ public class UserDAL {
         return "User removed.";
     }
 
-    private static User translateRow(int id, String username, String password, String email, Long card,int roleId, String roleName){
-        User user = new User();
-        Role role = new Role();
-        role.setId(roleId);
-        role.setName(roleName);
-        user.setId(id);
-        user.setUsername(username);
-        user.setPassword(password);
-        user.setEmail(email);
-        user.setCard(card);
-        user.setRole(role);
-        return user;
+    private UserDAL(int id, String username, String password, String email, Long card, int roleId, String roleName) {
+        super(id, username, password, email, card, roleId, roleName);
     }
 }

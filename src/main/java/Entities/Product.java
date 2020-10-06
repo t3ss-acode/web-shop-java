@@ -1,25 +1,25 @@
 package Entities;
 
-import java.io.Serializable;
-
-public class Product implements Serializable{
+public class Product{
     private int id;
     private String name;
     private int amount;
     private int cost;
     private String description;
 
-    public Product() {
-
+    protected Product(int id, String name, int cost) {
+        this.id = id;
+        this.name = name;
+        this.cost = cost;
     }
 
-    public Product(String name, int cost, String description) {
+    protected Product(int id, String name, int cost, String description) {
+        this.id = id;
         this.name = name;
         this.cost = cost;
         this.description = description;
     }
-
-    public Product(int id, String name, int amount, int cost, String description) {
+    protected Product(int id, String name, int cost, String description, int amount) {
         this.id = id;
         this.name = name;
         this.amount = amount;

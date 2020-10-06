@@ -4,6 +4,11 @@ public class Status {
     private int id;
     private String name;
 
+    protected Status(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     public int getId() {
         return id;
     }
