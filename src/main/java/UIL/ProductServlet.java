@@ -2,6 +2,7 @@ package UIL;
 
 import BL.ProductBL;
 import Entities.TokenStore;
+import EntitiesInfo.ProductInfo;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -38,11 +39,11 @@ public class ProductServlet extends HttpServlet {
             return;
         }
 
-        /*
-        if(ProductBL.addProduct((Product) req.getSession().getAttribute("product")))
+
+        if(ProductBL.addProduct((ProductInfo) req.getSession().getAttribute("product")))
             resp.setStatus(HttpServletResponse.SC_OK);
 
-         */
+
         resp.setStatus(HttpServletResponse.SC_CONFLICT);
     }
 }

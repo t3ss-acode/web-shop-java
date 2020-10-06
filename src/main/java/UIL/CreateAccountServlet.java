@@ -3,6 +3,7 @@ package UIL;
 import BL.UserBl;
 import Entities.Role;
 import Entities.User;
+import EntitiesInfo.UserInfo;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -33,12 +34,12 @@ public class CreateAccountServlet extends HttpServlet {
         if (role==null)
             role ="customer";
 
-        /*User newUser = new User(username, password,email, card, role);
+        UserInfo newUser = new UserInfo(username, password,email, card, role);
         if (UserBl.addUser(newUser)){
             resp.setStatus(HttpServletResponse.SC_OK);
             resp.sendRedirect("./index.jsp");
         }else
             resp.sendError(HttpServletResponse.SC_NOT_ACCEPTABLE);
-            */
+
     }
 }

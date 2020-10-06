@@ -65,7 +65,7 @@ public class UniqProductDAL extends UniqProduct{
         return "Uniq product removed.";
     }
 
-    public UniqProductDAL(int id, int productId, String productName, int cost, String desc, int statusId, String statusName) {
+    private UniqProductDAL(int id, int productId, String productName, int cost, String desc, int statusId, String statusName) {
         super(id, productId, productName, cost, desc, statusId, statusName);
     }
 }

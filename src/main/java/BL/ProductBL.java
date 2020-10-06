@@ -9,12 +9,10 @@ import java.util.Collection;
 import java.util.Iterator;
 
 public class ProductBL {
-    /*
-    public static boolean addProduct(Product addProduct){
+
+    public static boolean addProduct(ProductInfo addProduct){
         return ProductDAL.addProduct(addProduct);
     }
-
-     */
 
     public static ArrayList<ProductInfo> getProductsFromDB(){
         Collection<Product> productDALList = ProductDAL.getProductsFromDB();

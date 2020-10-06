@@ -1,6 +1,7 @@
 package DAL;
 
 import Entities.User;
+import EntitiesInfo.UserInfo;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -41,7 +42,7 @@ public class UserDAL extends User{
         return null;
     }
 
-    public static boolean addUser(User newUser){
+    public static boolean addUser(UserInfo newUser){
         String query[] = new String[2];
         query[0] = "INSERT INTO user (username,password,email,card) VALUES (?,?,?,?);";
         query[1] = "INSERT INTO userRoles (userId,roleId) VALUES (last_insert_id(), ?);";

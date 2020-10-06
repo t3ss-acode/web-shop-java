@@ -10,12 +10,12 @@ public class UserInfo {
     private String password;
     private String email;
     private long card;
-    private Role role;
+    private RoleInfo role;
 
     public UserInfo() {
     }
 
-    public UserInfo(String username, String password, String email, long card, Role role) {
+    public UserInfo(String username, String password, String email, long card, RoleInfo role) {
         this.username = username;
         this.password = password;
         this.email = email;
@@ -23,13 +23,31 @@ public class UserInfo {
         this.role = role;
     }
 
-    public UserInfo(int id, String username, String password, String email, long card, Role role) {
+    public UserInfo(String username, String password, String email, Long card,String roleName) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.email = email;
         this.card = card;
-        this.role = role;
+        this.role = new RoleInfo(roleName);
+    }
+
+    public UserInfo(int id, String username, String password, String email, Long card,String roleName) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.card = card;
+        this.role = new RoleInfo(roleName);
+    }
+
+    public UserInfo(int id, String username, String password, String email, Long card,int roleId, String roleName) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.card = card;
+        this.role = new RoleInfo(roleId,roleName);
     }
 
     public int getId() {
@@ -52,7 +70,7 @@ public class UserInfo {
         return card;
     }
 
-    public Role getRole() {
+    public RoleInfo getRole() {
         return role;
     }
 
@@ -76,7 +94,12 @@ public class UserInfo {
         this.card = card;
     }
 
-    public void setRole(Role role) {
+    public void setRole(RoleInfo role) {
         this.role = role;
+    }
+
+    public void setRole(int id, String name){
+        this.role.setId(id);
+        this.role.setName(name);
     }
 }

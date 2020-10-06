@@ -9,14 +9,14 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public class UserBl {
-    public static boolean addUser(User addUser){
+    public static boolean addUser(UserInfo addUserInfo){
         ArrayList<Role> roleList = (ArrayList<Role>) RoleBL.getRolesFromDB();
         for (Role r: roleList) {
-            if (r.getName().equalsIgnoreCase(addUser.getRole().getName())){
-                addUser.setRole(r);
+            if (r.getName().equalsIgnoreCase(addUserInfo.getRole().getName())){
+                addUserInfo.setRole(r.getId(),r.getName());
             }
         }
-        return UserDAL.addUser(addUser);
+        return UserDAL.addUser(addUserInfo);
     }
 
     public static Collection<User> getUsersFromDB(){
@@ -26,7 +26,7 @@ public class UserBl {
     public static UserInfo getUserFromDB(String username) {
         User userDAL = UserDAL.getUserFromDB(username);
         UserInfo userInfo = new UserInfo(userDAL.getId(), userDAL.getUsername(), userDAL.getPassword(),
-                userDAL.getEmail(), userDAL.getCard(), userDAL.getRole());
+                userDAL.getEmail(), userDAL.getCard(), userDAL.getRole().getId(),userDAL.getRole().getName());
 
         return userInfo;
     }

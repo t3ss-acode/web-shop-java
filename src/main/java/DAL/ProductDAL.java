@@ -1,6 +1,7 @@
 package DAL;
 
 import Entities.Product;
+import EntitiesInfo.ProductInfo;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -31,7 +32,7 @@ public class ProductDAL extends Product{
         return productList;
     }
 
-    public static boolean addProduct(Product addProduct) {
+    public static boolean addProduct(ProductInfo addProduct) {
         String[] query = new String[2];
         query[0] = "INSERT INTO products (name,cost,description) VALUES (?,?,?)";
         query[1] = "INSERT INTO amount (productId,statusId) VALUES (last_insert_id(),1)";
@@ -79,7 +80,7 @@ public class ProductDAL extends Product{
         return "Product removed.";
     }
 
-    public ProductDAL(int id, String name, int cost, String description, int amount) {
+    private ProductDAL(int id, String name, int cost, String description, int amount) {
         super(id, name, cost, description, amount);
     }
 }
