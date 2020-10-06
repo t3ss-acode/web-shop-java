@@ -1,5 +1,5 @@
-<%@ page import="Entities.Product" %>
-<%@ page import="java.util.ArrayList" %><%--
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="EntitiesInfo.ProductInfo" %><%--
   Created by IntelliJ IDEA.
   User: T3ss
   Date: 2020-10-04
@@ -54,18 +54,22 @@
         <p>Website with stuff you can put in a shopping cart</p>
     </div>
 
-    <% if (request.getSession().getAttribute("username") != null){
-        ArrayList<Product> shoppingCart = (ArrayList<Product>) request.getSession().getAttribute("shoppingcart");
-        for (int i = 0; i < shoppingCart.size(); i++) {
-            %><div class="productText">
-                <h2><%=shoppingCart.get(i).getName()%></h2>
-                <p><%=shoppingCart.get(i).getCost()%> kr &nbsp&nbsp&nbsp&nbsp
-                    Antal i lager: <%=shoppingCart.get(i).getAmount()%></p>
-                <p><%=shoppingCart.get(i).getDescription()%></p>
-                <form action="./removefromcart">
-                    <input type="submit" name="listId" value="<%=i%>">
-                </form>
-            </div><%
+    <%
+        if(request.getSession().getAttribute("username") != null) {
+            if(request.getSession().getAttribute("shoppingcart") != null) {
+                ArrayList<ProductInfo> shoppingCart = (ArrayList<ProductInfo>) request.getSession().getAttribute("shoppingcart");
+
+                for (int i = 0; i < shoppingCart.size(); i++) {
+                    %><div class="productText">
+                        <h2><%=shoppingCart.get(i).getName()%></h2>
+                        <p><%=shoppingCart.get(i).getCost()%> kr &nbsp&nbsp&nbsp&nbsp
+                            Antal i lager: <%=shoppingCart.get(i).getAmount()%></p>
+                        <p><%=shoppingCart.get(i).getDescription()%></p>
+                        <form action="./removefromcart">
+                            <input type="submit" name="listId" value="<%=i%>">
+                        </form>
+                    </div><%
+                }
             }
         } else
             response.sendRedirect("./login.jsp");%>

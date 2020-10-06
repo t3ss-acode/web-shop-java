@@ -1,6 +1,6 @@
 package UIL;
 
-import Entities.Product;
+import EntitiesInfo.ProductInfo;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,7 +19,7 @@ public class RemoveFromCartServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int listId = Integer.parseInt(req.getParameter("listId"));
 
-        ArrayList<Product> shoppingCart = (ArrayList<Product>) req.getSession().getAttribute("shoppingcart");
+        ArrayList<ProductInfo> shoppingCart = (ArrayList<ProductInfo>) req.getSession().getAttribute("shoppingcart");
         shoppingCart.remove(listId);
 
         req.getSession().setAttribute("shoppingcart", shoppingCart);

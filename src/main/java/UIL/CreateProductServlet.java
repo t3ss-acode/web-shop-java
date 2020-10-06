@@ -1,7 +1,6 @@
 package UIL;
 
 import BL.ProductBL;
-import Entities.Product;
 import Entities.TokenStore;
 
 import javax.servlet.ServletException;
@@ -11,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class CreateProductServlet extends HttpServlet {
+    /*
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String name = req.getParameter("name");
@@ -44,5 +44,8 @@ public class CreateProductServlet extends HttpServlet {
             resp.sendRedirect("./product.jsp");
         }else
             resp.sendError(HttpServletResponse.SC_CONFLICT);*/
+    /*
     }
+
+     */
 }

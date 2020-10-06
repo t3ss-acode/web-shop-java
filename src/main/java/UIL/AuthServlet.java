@@ -3,6 +3,7 @@ package UIL;
 import BL.UserBl;
 import Entities.TokenStore;
 import Entities.User;
+import EntitiesInfo.UserInfo;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -21,7 +22,7 @@ public class AuthServlet extends HttpServlet {
         String username = decodedAuth.substring(0,decodedAuth.indexOf(':'));
         String password = decodedAuth.substring(decodedAuth.indexOf(':')+1);
 
-        User loggedInUser = UserBl.getUserFromDB(username);
+        UserInfo loggedInUser = UserBl.getUserFromDB(username);
 
         if (loggedInUser == null){
             resp.sendError(HttpServletResponse.SC_UNAUTHORIZED);

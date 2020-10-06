@@ -1,7 +1,6 @@
 package UIL;
 
-import Entities.Product;
-import Entities.TokenStore;
+import EntitiesInfo.ProductInfo;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,13 +17,13 @@ public class AddToCartServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String productId = req.getParameter("productId");
-        Product product = (Product) req.getSession().getAttribute(productId);
+        ProductInfo product = (ProductInfo) req.getSession().getAttribute(productId);
 
-        ArrayList<Product> shoppingCart;
+        ArrayList<ProductInfo> shoppingCart;
         if(req.getSession().getAttribute("shoppingcart") != null) {
-            shoppingCart = (ArrayList<Product>) req.getSession().getAttribute("shoppingcart");
+            shoppingCart = (ArrayList<ProductInfo>) req.getSession().getAttribute("shoppingcart");
         } else {
-            shoppingCart = new ArrayList<Product>();
+            shoppingCart = new ArrayList<ProductInfo>();
         }
         shoppingCart.add(product);
 

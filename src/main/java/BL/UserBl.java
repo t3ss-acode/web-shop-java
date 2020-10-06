@@ -3,6 +3,7 @@ package BL;
 import DAL.UserDAL;
 import Entities.Role;
 import Entities.User;
+import EntitiesInfo.UserInfo;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -22,8 +23,12 @@ public class UserBl {
         return UserDAL.getUsersFromDB();
     }
 
-    public static User getUserFromDB(String username){
-        return UserDAL.getUserFromDB(username);
+    public static UserInfo getUserFromDB(String username) {
+        User userDAL = UserDAL.getUserFromDB(username);
+        UserInfo userInfo = new UserInfo(userDAL.getId(), userDAL.getUsername(), userDAL.getPassword(),
+                userDAL.getEmail(), userDAL.getCard(), userDAL.getRole());
+
+        return userInfo;
     }
 
     public static String removeUser(User userNotWanted){

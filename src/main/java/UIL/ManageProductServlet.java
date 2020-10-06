@@ -1,8 +1,6 @@
 package UIL;
 
-import BL.ProductBL;
 import BL.UniqProductBL;
-import Entities.Product;
 import Entities.TokenStore;
 import Entities.UniqProduct;
 
@@ -16,6 +14,7 @@ import java.util.Collection;
 public class ManageProductServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        /*
         String username = (String) req.getSession().getAttribute("username");
         String token = (String) req.getSession().getAttribute("token");
         String role = (String) req.getSession().getAttribute("role");
@@ -30,13 +29,17 @@ public class ManageProductServlet extends HttpServlet {
             return;
         }
 
+
         Collection list= UniqProductBL.getUniqProductsFromDB();
         req.getSession().setAttribute("uniqProductList",list);
         resp.sendRedirect("./manageProduct.jsp");
+
+         */
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        /*
         String username = (String) req.getSession().getAttribute("username");
         String token = (String) req.getSession().getAttribute("token");
         String role = (String) req.getSession().getAttribute("role");
@@ -57,10 +60,13 @@ public class ManageProductServlet extends HttpServlet {
             resp.sendRedirect("./manageProduct.jsp.jsp");
         } else
             resp.sendError(HttpServletResponse.SC_CONFLICT);
+
+         */
     }
 
     @Override
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        /*
         String username = (String) req.getSession().getAttribute("username");
         String token = (String) req.getSession().getAttribute("token");
         String role = (String) req.getSession().getAttribute("role");
@@ -81,5 +87,7 @@ public class ManageProductServlet extends HttpServlet {
             resp.sendRedirect("./manageProduct.jsp.jsp");
         } else
             resp.sendError(HttpServletResponse.SC_CONFLICT);
+
+         */
     }
 }

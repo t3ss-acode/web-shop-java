@@ -1,5 +1,6 @@
 package Entities;
 
+
 public class UniqProduct{
     private int id;
     private Product product;

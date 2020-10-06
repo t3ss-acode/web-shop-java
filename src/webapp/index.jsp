@@ -1,5 +1,4 @@
 <%@ page import="java.util.Collection" %>
-<%@ page import="Entities.Product" %>
 <%@ page import="java.util.ArrayList" %><%--
   Created by IntelliJ IDEA.
   User: Rasmus

@@ -6,6 +6,7 @@ import Entities.UniqProduct;
 import java.util.Collection;
 
 public class UniqProductBL {
+    /*
     public static boolean addUniqProduct(UniqProduct addUniqProduct){
         return UniqProductDAL.addUniqProduct(addUniqProduct);
     }
@@ -21,4 +22,6 @@ public class UniqProductBL {
     public static boolean updateUniqProduct(UniqProduct editedUniqProduct){
         return UniqProductDAL.updateUniqProduct(editedUniqProduct);
     }
+
+     */
 }

@@ -1,7 +1,7 @@
-<%@ page import="Entities.Product" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.net.HttpURLConnection" %>
-<%@ page import="java.net.URL" %><%--
+<%@ page import="java.net.URL" %>
+<%@ page import="EntitiesInfo.ProductInfo" %><%--
   Created by IntelliJ IDEA.
   User: Rasmus
   Date: 2020-10-04
@@ -75,15 +75,15 @@
     <% if (request.getSession().getAttribute("username") != null){
         //System.out.println(request.getSession().getAttribute("username"));
         //System.out.println("Inside if");
-        ArrayList<Product> productList = (ArrayList<Product>) request.getSession().getAttribute("productList");
-        for (int i = 0; i < productList.size(); i++) {
+        ArrayList<ProductInfo> productInfoList = (ArrayList<ProductInfo>) request.getSession().getAttribute("productList");
+        for (int i = 0; i < productInfoList.size(); i++) {
 
             %><div class="productText">
-                <h2><%=productList.get(i).getName()%></h2>
-                <p><%=productList.get(i).getCost()%> kr &nbsp&nbsp&nbsp&nbsp
-                    Antal i lager: <%=productList.get(i).getAmount()%></p>
-                <p><%=productList.get(i).getDescription()%></p>
-                <%request.getSession().setAttribute(String.valueOf(i), productList.get(i));%>
+                <h2><%=productInfoList.get(i).getName()%></h2>
+                <p><%=productInfoList.get(i).getCost()%> kr &nbsp&nbsp&nbsp&nbsp
+                    Antal i lager: <%=productInfoList.get(i).getAmount()%></p>
+                <p><%=productInfoList.get(i).getDescription()%></p>
+                <%request.getSession().setAttribute(String.valueOf(i), productInfoList.get(i));%>
                 <form action="./addtocart">
                     <input type="submit" name="productId" value="<%=i%>">
                 </form>
