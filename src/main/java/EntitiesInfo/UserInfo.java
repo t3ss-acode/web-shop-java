@@ -12,7 +12,9 @@ public class UserInfo {
     private long card;
     private RoleInfo role;
 
-    public UserInfo() {
+    protected UserInfo(int id, String username) {
+        this.id = id;
+        this.username = username;
     }
 
     public UserInfo(String username, String password, String email, long card, RoleInfo role) {

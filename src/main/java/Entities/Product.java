@@ -19,6 +19,7 @@ public class Product{
         this.cost = cost;
         this.description = description;
     }
+
     protected Product(int id, String name, int cost, String description, int amount) {
         this.id = id;
         this.name = name;
