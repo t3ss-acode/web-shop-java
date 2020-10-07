@@ -1,6 +1,7 @@
 package DAL;
 
 import Entities.UniqProduct;
+import EntitiesInfo.UniqProductInfo;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,13 +11,15 @@ import java.util.Collection;
 public class UniqProductDAL extends UniqProduct{
     public static Collection<UniqProduct> getUniqProductsFromDB(){
         Collection<UniqProduct> uniqProductList = new ArrayList<>();
-        String query = "SELECT amount.id,products.id,products.name,cost,description,status.id,status.name FROM amount" +
+        String query = "SELECT amount.id,products.id,products.name,cost,description,status.id,status.name FROM amount " +
                 "LEFT JOIN products ON products.id = amount.productId " +
                 "LEFT JOIN status ON amount.statusId = status.id;";
         try {
             ResultSet rs = DBConnection.executeSql(query,null);
             while(rs.next()){
-                uniqProductList.add(new UniqProductDAL(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getInt(4),rs.getString(5),rs.getInt(6),rs.getString(7)));
+                uniqProductList.add(new UniqProductDAL(rs.getInt(1),rs.getInt(2),
+                        rs.getString(3),rs.getInt(4),rs.getString(5),
+                        rs.getInt(6),rs.getString(7)));
             }
         }catch (SQLException e) {
             e.printStackTrace();
@@ -24,7 +27,7 @@ public class UniqProductDAL extends UniqProduct{
         return uniqProductList;
     }
 
-    public static boolean addUniqProduct(UniqProduct addUniqProduct) {
+    public static boolean addUniqProduct(UniqProductInfo addUniqProduct) {
         String query = "INSERT INTO amount (productId,statusId) VALUES (?,?)";
         ArrayList<Object> pp = new ArrayList<>();
         pp.add(addUniqProduct.getProduct().getId());
@@ -38,7 +41,7 @@ public class UniqProductDAL extends UniqProduct{
         return true;
     }
 
-    public static boolean updateUniqProduct(UniqProduct editedUniqProduct) {
+    public static boolean updateUniqProduct(UniqProductInfo editedUniqProduct) {
         String query = "UPDATE amount set statusId = ? " +
                 " WHERE id = ?";
         ArrayList<Object> pp = new ArrayList<>();
@@ -53,7 +56,7 @@ public class UniqProductDAL extends UniqProduct{
         return true;
     }
 
-    public static String removeUniqProduct(UniqProduct uniqProductNotWanted) {
+    public static String removeUniqProduct(UniqProductInfo uniqProductNotWanted) {
         String query = "DELETE FROM amount WHERE id = ?";
         ArrayList<Object> pp = new ArrayList<>();
         pp.add(uniqProductNotWanted.getId());

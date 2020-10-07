@@ -1,5 +1,4 @@
-<%@ page import="java.util.Collection" %>
-<%@ page import="java.util.ArrayList" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: Rasmus
   Date: 2020-09-25

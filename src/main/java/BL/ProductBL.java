@@ -23,20 +23,18 @@ public class ProductBL {
             Product product =(Product)iterator.next();
             productInfoList.add(new ProductInfo(product.getId(), product.getName(), product.getAmount(), product.getCost(), product.getDescription()));
         }
-        for(int i=0; i < productInfoList.size(); i++) {
-            System.out.println(productInfoList.get(i).getName());
-        }
+
         return productInfoList;
     }
 
-    /*
-    public static String removeProduct(Product productNotWanted){
+
+    public static String removeProduct(ProductInfo productNotWanted){
         return ProductDAL.removeProduct(productNotWanted);
     }
 
-    public static String updateProduct(Product editedProduct){
+    public static String updateProduct(ProductInfo editedProduct){
         return ProductDAL.updateProduct(editedProduct);
     }
 
-     */
+
 }

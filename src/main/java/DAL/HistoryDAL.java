@@ -1,6 +1,7 @@
 package DAL;
 
 import Entities.History;
+import EntitiesInfo.HistoryInfo;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,7 +19,10 @@ public class HistoryDAL extends History {
         try {
             ResultSet rs = DBConnection.executeSql(query,null);
             while(rs.next()){
-                historyList.add(new HistoryDAL(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getInt(4),rs.getInt(5),rs.getString(6),rs.getInt(7),rs.getString(8),rs.getInt(9),rs.getTimestamp(10)));
+                historyList.add(new HistoryDAL(rs.getInt(1),rs.getInt(2),
+                        rs.getString(3),rs.getInt(4),rs.getInt(5),
+                        rs.getString(6),rs.getInt(7),rs.getString(8),
+                        rs.getInt(9),rs.getTimestamp(10)));
             }
         }catch (SQLException e) {
             e.printStackTrace();
@@ -26,7 +30,7 @@ public class HistoryDAL extends History {
         return historyList;
     }
 
-    public static boolean addHistory(History addHistory) {
+    public static boolean addHistory(HistoryInfo addHistory) {
         String query = "INSERT INTO history (productId,actionId,userId,amount) VALUES (?,?,?,?)";
         ArrayList<Object> pp = new ArrayList<>();
         pp.add(addHistory.getProduct().getId());
@@ -42,7 +46,8 @@ public class HistoryDAL extends History {
         return true;
     }
 
-    private HistoryDAL(int id, int productId, String productName, int productCost, int actionId, String actionName, int userId, String userName, int amount, Timestamp timestamp) {
+    private HistoryDAL(int id, int productId, String productName, int productCost, int actionId, String actionName,
+                       int userId, String userName, int amount, Timestamp timestamp) {
         super(id, productId, productName, productCost, actionId, actionName, userId, userName, amount, timestamp);
     }
 }

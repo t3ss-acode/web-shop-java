@@ -51,7 +51,7 @@ public class ProductDAL extends Product{
         return true;
     }
 
-    public static String updateProduct(Product editedProduct) {
+    public static String updateProduct(ProductInfo editedProduct) {
         String query = "UPDATE products set name = ? , cost = ? , description = ?" +
                 " WHERE id = ?";
         ArrayList<Object> pp = new ArrayList<>();
@@ -68,7 +68,7 @@ public class ProductDAL extends Product{
         return "System updated.";
     }
 
-    public static String removeProduct(Product productNotWanted) {
+    public static String removeProduct(ProductInfo productNotWanted) {
         String query = "DELETE FROM products WHERE id = ?";
         ArrayList<Object> pp = new ArrayList<>();
         pp.add(productNotWanted.getId());

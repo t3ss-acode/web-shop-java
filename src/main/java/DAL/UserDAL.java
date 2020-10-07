@@ -17,7 +17,8 @@ public class UserDAL extends User{
         try {
             ResultSet rs = DBConnection.executeSql(query,null);
             while(rs.next()){
-                userList.add(new UserDAL(rs.getInt(1),rs.getString(2),rs.getString(3), rs.getString(4),rs.getLong(5),rs.getInt(6),rs.getString(7)));
+                userList.add(new UserDAL(rs.getInt(1),rs.getString(2),rs.getString(3),
+                        rs.getString(4),rs.getLong(5),rs.getInt(6),rs.getString(7)));
             }
         }catch (SQLException e) {
             e.printStackTrace();
@@ -34,7 +35,8 @@ public class UserDAL extends User{
         try {
             ResultSet rs = DBConnection.executeSql(query,null);
             rs.next();
-            user = new UserDAL(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),rs.getLong(5),rs.getInt(6),rs.getString(7));
+            user = new UserDAL(rs.getInt(1), rs.getString(2), rs.getString(3),
+                    rs.getString(4),rs.getLong(5),rs.getInt(6),rs.getString(7));
             return user;
         }catch (SQLException e) {
             e.printStackTrace();
@@ -63,7 +65,7 @@ public class UserDAL extends User{
         return true;
     }
 
-    public static String updateUser(User editedUser) {
+    public static String updateUser(UserInfo editedUser) {
         String query = "UPDATE products set password = ? , email = ? , card = ?" +
                 " WHERE id = ?";
         ArrayList<Object> pp = new ArrayList<>();
@@ -80,7 +82,7 @@ public class UserDAL extends User{
         return "System updated.";
     }
 
-    public static String removeUser(User userNotWanted) {
+    public static String removeUser(UserInfo userNotWanted) {
         String query = "DELETE FROM products WHERE id = ?";
         ArrayList<Object> pp = new ArrayList<>();
         pp.add(userNotWanted.getId());

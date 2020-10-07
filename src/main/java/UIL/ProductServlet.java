@@ -1,7 +1,7 @@
 package UIL;
 
 import BL.ProductBL;
-import Entities.TokenStore;
+import BL.TokenStore;
 import EntitiesInfo.ProductInfo;
 
 import javax.servlet.ServletException;

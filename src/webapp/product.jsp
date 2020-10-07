@@ -1,6 +1,4 @@
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="java.net.HttpURLConnection" %>
-<%@ page import="java.net.URL" %>
 <%@ page import="EntitiesInfo.ProductInfo" %><%--
   Created by IntelliJ IDEA.
   User: Rasmus
@@ -73,8 +71,6 @@
         <input type="submit" value="View shopping cart">
     </form>
     <% if (request.getSession().getAttribute("username") != null){
-        //System.out.println(request.getSession().getAttribute("username"));
-        //System.out.println("Inside if");
         ArrayList<ProductInfo> productInfoList = (ArrayList<ProductInfo>) request.getSession().getAttribute("productList");
         for (int i = 0; i < productInfoList.size(); i++) {
 

@@ -1,5 +1,4 @@
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="Entities.UniqProduct" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: Rasmus
   Date: 2020-10-05

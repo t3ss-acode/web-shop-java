@@ -1,6 +1,7 @@
 package DAL;
 
 import Entities.Role;
+import EntitiesInfo.RoleInfo;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -22,7 +23,7 @@ public class RoleDAL extends Role {
         return userList;
     }
 
-    public static boolean addRole(Role newRole){
+    public static boolean addRole(RoleInfo newRole){
         String query = "INSERT INTO roles (name) VALUES (?)";
         ArrayList<Object> pp = new ArrayList<>();
         pp.add(newRole.getName());
@@ -35,7 +36,7 @@ public class RoleDAL extends Role {
         return true;
     }
 
-    public static String updateRole(Role editedRole) {
+    public static String updateRole(RoleInfo editedRole) {
         String query = "UPDATE roles set name = ?" +
                 " WHERE id = ?";
         ArrayList<Object> pp = new ArrayList<>();
@@ -49,7 +50,7 @@ public class RoleDAL extends Role {
         return "System updated.";
     }
 
-    public static String removeRole(Role roleNotWanted) {
+    public static String removeRole(RoleInfo roleNotWanted) {
         String query = "DELETE FROM roles WHERE id = ?";
         ArrayList<Object> pp = new ArrayList<>();
         pp.add(roleNotWanted.getId());

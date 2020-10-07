@@ -14,7 +14,7 @@ public class HistoryInfo {
     private UserInfo user;
     private Timestamp timestamp;
 
-    protected HistoryInfo(int id, int productId, String productName, int productCost, int actionId, String actionName, int userId, String userName, int amount, Timestamp timestamp) {
+    public HistoryInfo(int id, int productId, String productName, int productCost, int actionId, String actionName, int userId, String userName, int amount, Timestamp timestamp) {
         this.id = id;
         this.product = new ProductInfo(productId,productName,productCost);
         this.amount = amount;

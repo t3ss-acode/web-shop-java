@@ -1,7 +1,8 @@
 package UIL;
 
 import BL.ProductBL;
-import Entities.TokenStore;
+import BL.TokenStore;
+import EntitiesInfo.ProductInfo;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -10,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class CreateProductServlet extends HttpServlet {
-    /*
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String name = req.getParameter("name");
@@ -20,7 +21,7 @@ public class CreateProductServlet extends HttpServlet {
         String token = (String) req.getSession().getAttribute("token");
         String role = (String) req.getSession().getAttribute("role");
 
-        if (TokenStore.getInstance().getUsername(username) != token){
+        if (!TokenStore.getInstance().checkToken(token)){
             resp.sendError(HttpServletResponse.SC_UNAUTHORIZED);
             return;
         }
@@ -35,17 +36,14 @@ public class CreateProductServlet extends HttpServlet {
             return;
         }
 
-        /*Product newproduct = new Product();
-        newproduct.setName(name);
-        newproduct.setCost(cost);
-        newproduct.setDescription(desc);
-        if (ProductBL.addProduct(newproduct)){
+        ProductInfo newProduct = new ProductInfo(name,cost,desc);
+        if (ProductBL.addProduct(newProduct)){
             resp.setStatus(HttpServletResponse.SC_OK);
-            resp.sendRedirect("./product.jsp");
+            resp.sendRedirect("./index.jsp");
         }else
-            resp.sendError(HttpServletResponse.SC_CONFLICT);*/
-    /*
+            resp.sendError(HttpServletResponse.SC_CONFLICT);
+
     }
 
-     */
+
 }

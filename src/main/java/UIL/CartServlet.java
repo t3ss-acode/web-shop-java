@@ -1,6 +1,7 @@
 package UIL;
 
-import Entities.TokenStore;
+
+import BL.TokenStore;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

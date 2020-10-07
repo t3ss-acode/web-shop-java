@@ -3,6 +3,7 @@ package BL;
 import DAL.UserDAL;
 import Entities.Role;
 import Entities.User;
+import EntitiesInfo.RoleInfo;
 import EntitiesInfo.UserInfo;
 
 import java.util.ArrayList;
@@ -10,8 +11,8 @@ import java.util.Collection;
 
 public class UserBl {
     public static boolean addUser(UserInfo addUserInfo){
-        ArrayList<Role> roleList = (ArrayList<Role>) RoleBL.getRolesFromDB();
-        for (Role r: roleList) {
+        ArrayList<RoleInfo> roleList = (ArrayList<RoleInfo>) RoleBL.getRolesFromDB();
+        for (RoleInfo r: roleList) {
             if (r.getName().equalsIgnoreCase(addUserInfo.getRole().getName())){
                 addUserInfo.setRole(r.getId(),r.getName());
             }
@@ -31,11 +32,11 @@ public class UserBl {
         return userInfo;
     }
 
-    public static String removeUser(User userNotWanted){
+    public static String removeUser(UserInfo userNotWanted){
         return UserDAL.removeUser(userNotWanted);
     }
 
-    public static String updateUser(User editedUser){
+    public static String updateUser(UserInfo editedUser){
         return UserDAL.updateUser(editedUser);
     }
 }
