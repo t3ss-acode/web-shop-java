@@ -30,7 +30,10 @@ public class HistoryDAL extends History {
         return historyList;
     }
 
-    public static boolean addHistory(HistoryInfo addHistory) {
+    public static boolean addHistory(HistoryInfo addHistoryInfo) {
+        History addHistory = new HistoryDAL(addHistoryInfo.getProduct().getId(),
+                addHistoryInfo.getAction().getId(),addHistoryInfo.getUser().getId(),
+                addHistoryInfo.getAmount());
         String query = "INSERT INTO history (productId,actionId,userId,amount) VALUES (?,?,?,?)";
         ArrayList<Object> pp = new ArrayList<>();
         pp.add(addHistory.getProduct().getId());
@@ -44,6 +47,10 @@ public class HistoryDAL extends History {
             return false;
         }
         return true;
+    }
+
+    public HistoryDAL(int productId, int actionId, int userId, int amount) {
+        super(productId, actionId, userId, amount);
     }
 
     private HistoryDAL(int id, int productId, String productName, int productCost, int actionId, String actionName,

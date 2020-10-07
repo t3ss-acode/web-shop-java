@@ -6,6 +6,11 @@ public class UniqProduct{
     private Product product;
     private Status status;
 
+    protected UniqProduct(int productId, int statusId){
+        this.product = new Product(productId,null,0);
+        this.status = new Status(statusId,null);
+    }
+
     protected UniqProduct(int id,int productId, String productName,int cost, String desc,int statusId, String statusName) {
         this.id = id;
         this.product = new Product(productId,productName,cost,desc);

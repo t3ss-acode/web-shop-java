@@ -10,6 +10,13 @@ public class History {
     private User user;
     private Timestamp timestamp;
 
+    protected History(int productId, int actionId, int userId, int amount){
+        this.product = new Product(productId,null,0);
+        this.action = new Action(actionId,null);
+        this.user = new User(userId,null);
+        this.amount = amount;
+    }
+
     protected History(int id, int productId, String productName, int productCost, int actionId, String actionName, int userId, String userName, int amount, Timestamp timestamp) {
         this.id = id;
         this.product = new Product(productId,productName,productCost);

@@ -44,7 +44,9 @@ public class UserDAL extends User{
         return null;
     }
 
-    public static boolean addUser(UserInfo newUser){
+    public static boolean addUser(UserInfo newUserInfo){
+        User newUser = new UserDAL(newUserInfo.getId(),newUserInfo.getUsername(),newUserInfo.getPassword(),
+                newUserInfo.getEmail(),newUserInfo.getCard(),newUserInfo.getRole().getId(),newUserInfo.getRole().getName());
         String[] query = new String[2];
         query[0] = "INSERT INTO user (username,password,email,card) VALUES (?,?,?,?);";
         query[1] = "INSERT INTO userRoles (userId,roleId) VALUES (last_insert_id(), ?);";

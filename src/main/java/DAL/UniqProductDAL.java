@@ -27,7 +27,9 @@ public class UniqProductDAL extends UniqProduct{
         return uniqProductList;
     }
 
-    public static boolean addUniqProduct(UniqProductInfo addUniqProduct) {
+    public static boolean addUniqProduct(UniqProductInfo addUniqProductInfo) {
+        UniqProduct addUniqProduct = new UniqProductDAL(addUniqProductInfo.getProduct().getId(),
+                addUniqProductInfo.getStatus().getId());
         String query = "INSERT INTO amount (productId,statusId) VALUES (?,?)";
         ArrayList<Object> pp = new ArrayList<>();
         pp.add(addUniqProduct.getProduct().getId());
@@ -41,7 +43,9 @@ public class UniqProductDAL extends UniqProduct{
         return true;
     }
 
-    public static boolean updateUniqProduct(UniqProductInfo editedUniqProduct) {
+    public static boolean updateUniqProduct(UniqProductInfo editedUniqProductInfo) {
+        UniqProduct editedUniqProduct = new UniqProductDAL(editedUniqProductInfo.getProduct().getId(),
+                editedUniqProductInfo.getStatus().getId());
         String query = "UPDATE amount set statusId = ? " +
                 " WHERE id = ?";
         ArrayList<Object> pp = new ArrayList<>();
@@ -54,6 +58,10 @@ public class UniqProductDAL extends UniqProduct{
             return false;
         }
         return true;
+    }
+
+    public UniqProductDAL(int productId, int statusId) {
+        super(productId, statusId);
     }
 
     private UniqProductDAL(int id, int productId, String productName, int cost, String desc, int statusId, String statusName) {
