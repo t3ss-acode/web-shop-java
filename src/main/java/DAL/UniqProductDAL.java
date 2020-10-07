@@ -56,18 +56,6 @@ public class UniqProductDAL extends UniqProduct{
         return true;
     }
 
-    public static String removeUniqProduct(UniqProductInfo uniqProductNotWanted) {
-        String query = "DELETE FROM amount WHERE id = ?";
-        ArrayList<Object> pp = new ArrayList<>();
-        pp.add(uniqProductNotWanted.getId());
-        try {
-            DBConnection.executeUpdateSql(query,pp);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return "Uniq product removed.";
-    }
-
     private UniqProductDAL(int id, int productId, String productName, int cost, String desc, int statusId, String statusName) {
         super(id, productId, productName, cost, desc, statusId, statusName);
     }

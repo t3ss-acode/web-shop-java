@@ -1,9 +1,5 @@
 package EntitiesInfo;
 
-import Entities.Action;
-import Entities.Product;
-import Entities.User;
-
 import java.sql.Timestamp;
 
 public class HistoryInfo {

@@ -5,9 +5,9 @@ import java.util.Map;
 import java.util.UUID;
 
 public class TokenStore {
-    private Map<String, TokenData> tokenMap = new HashMap<>();
+    private final Map<String, TokenData> tokenMap = new HashMap<>();
 
-    private static TokenStore instance = new TokenStore();
+    private static final TokenStore instance = new TokenStore();
     public static TokenStore getInstance(){return instance;}
 
     private TokenStore(){}

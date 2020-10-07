@@ -1,9 +1,5 @@
 package EntitiesInfo;
 
-import Entities.Role;
-
-import java.math.BigInteger;
-
 public class UserInfo {
     private int id;
     private String username;
@@ -17,25 +13,7 @@ public class UserInfo {
         this.username = username;
     }
 
-    public UserInfo(String username, String password, String email, long card, RoleInfo role) {
-        this.username = username;
-        this.password = password;
-        this.email = email;
-        this.card = card;
-        this.role = role;
-    }
-
     public UserInfo(String username, String password, String email, Long card,String roleName) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-        this.email = email;
-        this.card = card;
-        this.role = new RoleInfo(roleName);
-    }
-
-    public UserInfo(int id, String username, String password, String email, Long card,String roleName) {
-        this.id = id;
         this.username = username;
         this.password = password;
         this.email = email;

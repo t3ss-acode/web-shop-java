@@ -6,7 +6,6 @@ import EntitiesInfo.ProductInfo;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
 
 public class ProductBL {
 
@@ -19,21 +18,11 @@ public class ProductBL {
 
 
         ArrayList<ProductInfo> productInfoList = new ArrayList<>();
-        for(Iterator iterator = productDALList.iterator(); iterator.hasNext();) {
-            Product product =(Product)iterator.next();
+        for (Product product : productDALList) {
             productInfoList.add(new ProductInfo(product.getId(), product.getName(), product.getAmount(), product.getCost(), product.getDescription()));
         }
 
         return productInfoList;
-    }
-
-
-    public static String removeProduct(ProductInfo productNotWanted){
-        return ProductDAL.removeProduct(productNotWanted);
-    }
-
-    public static String updateProduct(ProductInfo editedProduct){
-        return ProductDAL.updateProduct(editedProduct);
     }
 
 

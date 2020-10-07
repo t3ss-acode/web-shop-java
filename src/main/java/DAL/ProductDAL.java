@@ -51,35 +51,6 @@ public class ProductDAL extends Product{
         return true;
     }
 
-    public static String updateProduct(ProductInfo editedProduct) {
-        String query = "UPDATE products set name = ? , cost = ? , description = ?" +
-                " WHERE id = ?";
-        ArrayList<Object> pp = new ArrayList<>();
-        pp.add(editedProduct.getName());
-        pp.add(editedProduct.getCost());
-        pp.add(editedProduct.getDescription());
-        pp.add(editedProduct.getId());
-        try {
-            DBConnection.executeUpdateSql(query,pp);
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return "Could not Update.";
-        }
-        return "System updated.";
-    }
-
-    public static String removeProduct(ProductInfo productNotWanted) {
-        String query = "DELETE FROM products WHERE id = ?";
-        ArrayList<Object> pp = new ArrayList<>();
-        pp.add(productNotWanted.getId());
-        try {
-            DBConnection.executeUpdateSql(query,pp);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return "Product removed.";
-    }
-
     private ProductDAL(int id, String name, int cost, String description, int amount) {
         super(id, name, cost, description, amount);
     }

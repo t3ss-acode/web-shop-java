@@ -45,7 +45,7 @@ public class UserDAL extends User{
     }
 
     public static boolean addUser(UserInfo newUser){
-        String query[] = new String[2];
+        String[] query = new String[2];
         query[0] = "INSERT INTO user (username,password,email,card) VALUES (?,?,?,?);";
         query[1] = "INSERT INTO userRoles (userId,roleId) VALUES (last_insert_id(), ?);";
         ArrayList<Object>[] pp = new ArrayList[query.length];
@@ -63,35 +63,6 @@ public class UserDAL extends User{
             return false;
         }
         return true;
-    }
-
-    public static String updateUser(UserInfo editedUser) {
-        String query = "UPDATE products set password = ? , email = ? , card = ?" +
-                " WHERE id = ?";
-        ArrayList<Object> pp = new ArrayList<>();
-        pp.add(editedUser.getPassword());
-        pp.add(editedUser.getEmail());
-        pp.add(editedUser.getCard());
-        pp.add(editedUser.getId());
-        try {
-            DBConnection.executeUpdateSql(query,pp);
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return "Could not Update.";
-        }
-        return "System updated.";
-    }
-
-    public static String removeUser(UserInfo userNotWanted) {
-        String query = "DELETE FROM products WHERE id = ?";
-        ArrayList<Object> pp = new ArrayList<>();
-        pp.add(userNotWanted.getId());
-        try {
-            DBConnection.executeUpdateSql(query,pp);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return "User removed.";
     }
 
     private UserDAL(int id, String username, String password, String email, Long card, int roleId, String roleName) {

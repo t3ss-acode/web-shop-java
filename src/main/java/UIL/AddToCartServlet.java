@@ -23,7 +23,7 @@ public class AddToCartServlet extends HttpServlet {
         if(req.getSession().getAttribute("shoppingcart") != null) {
             shoppingCart = (ArrayList<ProductInfo>) req.getSession().getAttribute("shoppingcart");
         } else {
-            shoppingCart = new ArrayList<ProductInfo>();
+            shoppingCart = new ArrayList<>();
         }
         shoppingCart.add(product);
 

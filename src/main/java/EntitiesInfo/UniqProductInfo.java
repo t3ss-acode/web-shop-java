@@ -1,8 +1,5 @@
 package EntitiesInfo;
 
-import Entities.Product;
-import Entities.Status;
-
 public class UniqProductInfo {
     private int id;
     private ProductInfo product;
